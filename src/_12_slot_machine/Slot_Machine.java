@@ -1,5 +1,6 @@
 package _12_slot_machine;
 
+import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,32 +13,69 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Slot_Machine implements ActionListener {
-	int r0 = new Random().nextInt(2);
-	int r1 = new Random().nextInt(2);
-	int r2 = new Random().nextInt(2);
+	int r0 = new Random().nextInt(3);
+	int r1 = new Random().nextInt(3);
+	int r2 = new Random().nextInt(3);
+	JLabel cherry;
+	JLabel lemon;
+	JLabel seven;
 	JButton b = new JButton();
+	JPanel p= new JPanel();
+	JFrame f= new JFrame();
+
+
 public static void main(String[] args) {
 	Slot_Machine s = new Slot_Machine();
-	s.randoms();
     s.createUI();
 }
  void createUI() {
-	JFrame f= new JFrame();
-	JPanel p= new JPanel();
 	p.add(b);
 	f.add(p);
 	f.setVisible(true);
-	f.pack();
 	b.addActionListener(this);
+
+
+	try {
+		 cherry=createLabelImage("Cherry2.png");
+	} catch (MalformedURLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	try {
+		 lemon= createLabelImage("Lemon3.png");
+	} catch (MalformedURLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	try {
+		 seven= createLabelImage("Seven2.png");
+	} catch (MalformedURLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	cherry.setPreferredSize(new Dimension(400,400));
+	lemon.setPreferredSize(new Dimension(400,400));
+	seven.setPreferredSize(new Dimension(400,400));
+p.add(cherry);
+p.add(lemon);
+p.add(seven);
+f.pack();
 }
 public void actionPerformed(ActionEvent arg0) {
   if (arg0.getSource()==b) {
-	  r0=new Random().nextInt(2);
-	  r1=new Random().nextInt(2);
-	  r2=new Random().nextInt(2);
+	  r0=new Random().nextInt(3);
+	  r1=new Random().nextInt(3);
+	  r2=new Random().nextInt(3);
+	  randoms();
+	  if (r0==0&&r1==0&&r2==0||r0==1&&r1==1&&r2==1||r0==3&&r1==3&&r2==3) {
+		  JOptionPane.showMessageDialog(null, "You done did a win!");
+	  }
+	  
+	  
 
   }
 }
@@ -53,9 +91,17 @@ JLabel imageLabel = new JLabel(icon);
 return imageLabel;
 }
 void randoms() {
+	JLabel cherry2 = new JLabel();
+	JLabel lemon2= new JLabel();
+	JLabel seven2= new JLabel();
+
+
+
+	
+	p.removeAll();
 	if (r0==0) {
 		try {
-			JLabel cherry=createLabelImage("cherry.jpg");
+			  cherry2=createLabelImage("Cherry2.png");
 		} 
 
 		catch (MalformedURLException e) {
@@ -65,7 +111,7 @@ void randoms() {
 	}
 	if (r0==1) {
 		try { 
-			JLabel lemon= createLabelImage("lemon.png");
+			  cherry2= createLabelImage("Lemon3.png");
 		}
 		catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -75,7 +121,7 @@ void randoms() {
 	}
 		if (r0==2) {
 			try { 
-				JLabel seven= createLabelImage("seven.png");
+				  cherry2= createLabelImage("Seven2.png");
 			}
 			catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
@@ -87,7 +133,7 @@ void randoms() {
 
 if (r1==0) {
 	try {
-		JLabel cherry=createLabelImage("cherry.jpg");
+		 lemon2=createLabelImage("Cherry2.png");
 	} 
 
 	catch (MalformedURLException e) {
@@ -97,7 +143,7 @@ if (r1==0) {
 }
 if (r1==1) {
 	try { 
-		JLabel lemon= createLabelImage("lemon.png");
+		 lemon2= createLabelImage("Lemon3.png");
 	}
 	catch (MalformedURLException e) {
 		// TODO Auto-generated catch block
@@ -107,7 +153,7 @@ if (r1==1) {
 }
 	if (r1==2) {
 		try { 
-			JLabel seven= createLabelImage("seven.png");
+			 lemon2= createLabelImage("Seven2.png");
 		}
 		catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -119,7 +165,7 @@ if (r1==1) {
 
 if (r2==0) {
 	try {
-		JLabel cherry=createLabelImage("cherry.jpg");
+		 seven2=createLabelImage("Cherry2.png");
 	} 
 
 	catch (MalformedURLException e) {
@@ -129,7 +175,7 @@ if (r2==0) {
 }
 if (r2==1) {
 	try { 
-		JLabel lemon= createLabelImage("lemon.png");
+		 seven2= createLabelImage("Lemon3.png");
 	}
 	catch (MalformedURLException e) {
 		// TODO Auto-generated catch block
@@ -139,7 +185,7 @@ if (r2==1) {
 }
 	if (r2==2) {
 		try { 
-			JLabel seven= createLabelImage("seven.png");
+			 seven2= createLabelImage("Seven2.png");
 		}
 		catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -148,6 +194,16 @@ if (r2==1) {
 	
 }
 }
+	cherry2.setPreferredSize(new Dimension(300,300));
+	lemon2.setPreferredSize(new Dimension(300,300));
+	seven2.setPreferredSize(new Dimension(300,300));
+	p.add(b);
+
+	p.add(cherry2);
+	p.add(lemon2);
+	p.add(seven2);
+	
+	f.pack();
 }
 }
 
