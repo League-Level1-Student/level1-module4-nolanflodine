@@ -1,5 +1,6 @@
 package _05_typing_tutor;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -42,11 +43,18 @@ static char generateRandomLetter1() {
 @Override
 public void keyPressed(KeyEvent arg0) {
 	// TODO Auto-generated method stub
-	System.out.println(arg0);
-	currentLetter = generateRandomLetter1();
-	label.setText(currentLetter+"");
-     if (arg0.getSource()==KeyEvent);
-}
+ 	System.out.println(arg0.getKeyChar());
+     if (arg0.getKeyChar()==currentLetter) {
+    	 System.out.println("correct");
+    	 panel.setBackground(Color.green);
+     }
+     else {  panel.setBackground(Color.red);
+     }
+		currentLetter = generateRandomLetter1();
+		label.setText(currentLetter+"");
+
+     }
+
 
 
 @Override
